@@ -1,0 +1,81 @@
+/* ===== BODY & BACKGROUND ===== */
+body.bg-gradient {
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); /* dark blue gradient */
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+    color: #fff;
+  }
+  
+  /* ===== SECTION HEADINGS ===== */
+  .section-heading {
+    font-weight: 600;
+    font-size: 2rem;
+    color: #ffc107; /* golden yellow */
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+  }
+  
+  /* ===== RESULT CARD ===== */
+  .result-card {
+    background: rgba(255, 255, 255, 0.05); /* semi-transparent glass */
+    backdrop-filter: blur(12px);
+    border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .result-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+  }
+  
+  /* ===== CANDIDATE PHOTO ===== */
+  .result-photo {
+    width: 100%;
+    border-radius: 15px;
+    border: 2px solid #ffc107; /* golden border */
+    transition: transform 0.3s ease;
+  }
+  
+  .result-photo:hover {
+    transform: scale(1.05);
+  }
+  
+  /* ===== PROGRESS BARS ===== */
+  .progress {
+    height: 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  .progress-bar {
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: width 1s ease;
+    text-align: center;
+    color: #fff;
+  }
+  
+  /* Different colored progress bars */
+  #progress-Rohit { background: linear-gradient(90deg, #ffc107, #ff9800); }
+  #progress-Anita { background: linear-gradient(90deg, #00bcd4, #2196f3); }
+  #progress-Suresh { background: linear-gradient(90deg, #4caf50, #8bc34a); }
+  #progress-Neha { background: linear-gradient(90deg, #f44336, #e91e63); }
+  
+  /* ===== FOOTER ===== */
+  .footer {
+    font-weight: 500;
+    background: #111;
+    color: #fff;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.4);
+  }
+  
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 576px) {
+    .result-card {
+      margin-bottom: 20px;
+    }
+  }
+  

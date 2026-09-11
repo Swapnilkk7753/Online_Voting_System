@@ -1,0 +1,30 @@
+body {
+  background: linear-gradient(120deg, #9e9ec9, #3c3b3b);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 420px;
+  border-radius: 15px;
+}
+
+input, select {
+  border-radius: 8px;
+}
+
+.preview-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin: 10px auto;
+  display: block;
+  border: 2px solid #ffc107;
+}
+
+
+  .btn:hover {
+    transform: translateY(-1px);
+    transition: 0.2s ease-in-out;
+  }
+

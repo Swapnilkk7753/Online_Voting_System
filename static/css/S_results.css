@@ -1,0 +1,68 @@
+body {
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    min-height: 100vh;
+    font-family: 'Segoe UI', sans-serif;
+    color: #fff;
+    padding-top: 80px;
+  }
+  
+  /* Navbar */
+  .navbar {
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+  }
+  
+  /* Main Container */
+  .main-container {
+    max-width: 1200px;
+  }
+  
+  /* Summary Cards */
+  .summary-card {
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+  }
+  
+  .summary-card i {
+    font-size: 2rem;
+    color: gold;
+  }
+  
+  .summary-card span {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  /* Result Cards */
+  .glass-card {
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease;
+  }
+  
+  .glass-card:hover {
+    transform: translateY(-6px);
+  }
+  
+  .winner {
+    border: 2px solid gold;
+    background: rgba(255, 215, 0, 0.15);
+  }
+  
+  /* Progress Bar */
+  .progress {
+    height: 10px;
+    border-radius: 10px;
+  }
+  
+  .rank-badge {
+    font-size: 0.85rem;
+  }
+  

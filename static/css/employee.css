@@ -1,0 +1,343 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    color: #fff;
+  }
+  
+  .marquee-box {
+    background: #000;
+    color: #ffc107;
+    text-align: center;
+    padding: 10px;
+    font-weight: 600;
+  }
+  
+  .glass-card {
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+  }
+  
+  .feature-list li {
+    list-style: none;
+    padding: 6px 0;
+  }
+  
+  .voter-card {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+  }
+  
+  .profile-photo {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    border: 3px solid #ffc107;
+    object-fit: cover;
+  }
+  
+  .candidate {
+    transition: transform 0.3s;
+    border-radius: 16px;
+  }
+  
+  .candidate:hover {
+    transform: translateY(-6px);
+  }
+  
+  .candidate-photo {
+    height: 200px;
+    object-fit: cover;
+    border-radius: 16px 16px 0 0;
+  }
+  
+  .modal-img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 3px solid #000;
+    object-fit: cover;
+    margin-bottom: 10px;
+  }
+  
+  .footer {
+    background: #000;
+    color: #ffc107;
+    padding: 15px;
+  }
+  
+  /* Navbar Buttons */
+.nav-btn {
+    color: #fff !important;
+    padding: 6px 14px;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+  }
+  
+  .nav-btn i {
+    color: #ffc107;
+    margin-right: 6px;
+  }
+  
+  .nav-btn:hover {
+    background: rgba(255, 193, 7, 0.15);
+    color: #ffc107 !important;
+  }
+  
+  /* Logout Button */
+  .logout-btn {
+    transition: all 0.3s ease;
+  }
+  
+  .logout-btn:hover {
+    box-shadow: 0 0 12px rgba(255, 193, 7, 0.7);
+    transform: translateY(-1px);
+  }
+  .nav-btn {
+    color: #fff !important;
+    padding: 6px 14px;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+  }
+  
+  .nav-btn i {
+    color: #ffc107;
+    margin-right: 6px;
+  }
+  
+  .nav-btn:hover {
+    background: rgba(255, 193, 7, 0.15);
+    color: #ffc107 !important;
+  }
+  
+  .logout-btn:hover {
+    box-shadow: 0 0 12px rgba(255, 193, 7, 0.7);
+  }
+  /* ===== CANDIDATE CARDS ===== */
+.candidate {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    border-radius: 18px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    transition: all 0.35s ease;
+    height: 100%;
+  }
+  
+  .candidate:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
+  }
+  
+  /* Candidate Image */
+  .candidate-photo {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-bottom: 2px solid rgba(255, 193, 7, 0.5);
+  }
+  
+  /* Candidate Body */
+  .candidate-body {
+    padding: 18px;
+    text-align: center;
+    color: #fff;
+  }
+  
+  .candidate-body h5 {
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+  
+  .candidate-body p.text-muted {
+    color: #adb5bd !important;
+    font-size: 0.9rem;
+    margin-bottom: 14px;
+  }
+  
+  /* Buttons Container */
+  .candidate-body button {
+    margin: 6px 4px;
+    min-width: 90px;
+  }
+  
+  /* VIEW BUTTON */
+  .view-btn {
+    background: transparent;
+    color: #0dcaf0;
+    border: 1px solid #0dcaf0;
+    border-radius: 30px;
+    padding: 6px 16px;
+    transition: all 0.3s ease;
+  }
+  
+  .view-btn:hover {
+    background: #0dcaf0;
+    color: #000;
+    box-shadow: 0 0 12px rgba(13, 202, 240, 0.8);
+  }
+  
+  /* VOTE BUTTON */
+  .vote-btn {
+    background: linear-gradient(135deg, #ffc107, #ff9800);
+    color: #000;
+    border: none;
+    border-radius: 30px;
+    padding: 6px 18px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* Glow Effect */
+  .vote-btn:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 18px rgba(255, 193, 7, 0.9);
+  }
+  
+  /* Click Glow Animation */
+  .vote-btn:active {
+    animation: voteGlow 0.4s ease;
+  }
+  
+  @keyframes voteGlow {
+    0% {
+      box-shadow: 0 0 0 rgba(255, 193, 7, 0.8);
+    }
+    100% {
+      box-shadow: 0 0 30px rgba(255, 193, 7, 1);
+    }
+  }
+  
+  /* Votes Count */
+  .candidate-body p.mt-2 {
+    margin-top: 12px;
+    font-size: 0.9rem;
+    color: #ffc107;
+    font-weight: 600;
+  }
+  
+  /* Responsive Fix */
+  @media (max-width: 576px) {
+    .candidate-photo {
+      height: 180px;
+    }
+  }
+  /* ===== GLASS CARD about ===== */
+.glass-card {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    transition: all 0.4s ease;
+  }
+  
+  .glass-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+  }
+  
+  /* ===== Section Heading ===== */
+  .section-heading {
+    font-weight: 600;
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #ffc107;
+  }
+  
+  /* ===== Feature List ===== */
+  .feature-list li {
+    font-size: 1rem;
+    padding: 8px 0;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: all 0.3s ease;
+  }
+  
+  .feature-list li i {
+    font-size: 1.2rem;
+  }
+  
+  /* Hover effect for each feature */
+  .feature-list li:hover {
+    transform: translateX(5px);
+    color: #0dcaf0;
+  }
+  
+  /* Responsive Fix */
+  @media (max-width: 576px) {
+    .feature-list li {
+      font-size: 0.95rem;
+    }
+    .section-heading {
+      font-size: 1.2rem;
+    }
+  }
+  /* ===== CONTACT CARD ===== */
+.contact-card {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    transition: all 0.4s ease;
+  }
+  
+  .contact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+  }
+  
+  /* ===== Subheading ===== */
+  .contact-card .subheading {
+    font-weight: 600;
+    font-size: 1.4rem;
+    color: #ffc107;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  /* ===== Contact Details ===== */
+  .contact-card p {
+    font-size: 1rem;
+    margin: 6px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+  }
+  
+  .contact-card p i {
+    font-size: 1.2rem;
+  }
+  
+  /* Hover effect on contact details */
+  .contact-card p:hover {
+    color: #0dcaf0;
+    transform: translateX(5px);
+  }
+  
+  /* ===== Contact Buttons ===== */
+  .contact-buttons .btn {
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    transition: all 0.3s ease;
+  }
+  
+  .contact-buttons .btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 5px 20px rgba(255, 255, 255, 0.4);
+  }
+  
