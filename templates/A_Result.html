@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Admin | Election Results</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Bootstrap -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Icons -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+<style>
+
+body{
+background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+min-height:100vh;
+color:white;
+}
+
+.navbar{
+background:rgba(0,0,0,0.6);
+backdrop-filter:blur(10px);
+}
+
+.glass{
+background:rgba(255,255,255,0.15);
+backdrop-filter:blur(12px);
+border-radius:15px;
+padding:20px;
+box-shadow:0 8px 30px rgba(0,0,0,0.3);
+margin-bottom:25px;
+}
+
+.election-card{
+cursor:pointer;
+transition:0.3s;
+}
+
+.election-card:hover{
+transform:scale(1.03);
+box-shadow:0 10px 30px rgba(0,0,0,0.5);
+}
+
+.progress{
+height:18px;
+border-radius:10px;
+}
+
+.winner{
+border:2px solid gold;
+}
+
+.badge-winner{
+background:gold;
+color:black;
+}
+
+.table{
+color:white;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav class="navbar navbar-dark px-4">
+
+<span class="navbar-brand fw-bold">
+<i class="bi bi-bar-chart-fill"></i> Admin Election Results
+</span>
+
+<div class="ms-auto">
+    <a href="/dashboard" class="btn btn-outline-warning btn-sm">
+      <i class="bi bi-arrow-left"></i> Dashboard
+    </a>
+  </div>
+</nav>
+
+
+<div class="container mt-4">
+
+<!-- Election List -->
+
+<div class="glass">
+
+<h4><i class="bi bi-list"></i> Elections</h4>
+<hr>
+
+<div class="row" id="electionList"></div>
+
+</div>
+
+
+<!-- Result Section -->
+
+<div id="resultSection" style="display:none;">
+
+<div class="glass winner" id="winnerCard"></div>
+
+<div class="glass">
+
+<h5><i class="bi bi-table"></i> Candidate Results</h5>
+<hr>
+
+<div class="table-responsive">
+
+<table class="table align-middle">
+
+<thead>
+
+<tr>
+<th>Candidate</th>
+<th>Votes</th>
+<th width="50%">Vote Share</th>
+<th>Status</th>
+</tr>
+
+</thead>
+
+<tbody id="resultTable"></tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<script>
+
+
+let elections =[]
+
+fetch("/api/A_result_manage")
+.then(res=>res.json())
+.then(data=>{elections=data.users;
+renderCategories(elections);
+})
+.catch(err=>console.error(err))
+
+function renderCategories(){
+const electionList=document.getElementById("electionList")
+
+elections.forEach((election,index)=>{
+
+let card=`
+
+<div class="col-md-4 mb-3">
+
+<div class="glass election-card" onclick="showResults(${index})">
+
+<h5>${election.name}</h5>
+
+<p>Total Candidates: ${election.candidates.length}</p>
+
+<button class="btn btn-sm btn-warning">
+View Results
+</button>
+
+</div>
+
+</div>
+
+`
+
+electionList.innerHTML+=card
+
+})
+}
+
+
+
+function showResults(index){
+
+const election=elections[index]
+
+document.getElementById("resultSection").style.display="block"
+
+let totalVotes=0
+
+election.candidates.forEach(c=>totalVotes+=c.votes)
+
+let winner=election.candidates.reduce((a,b)=>a.votes>b.votes?a:b)
+
+document.getElementById("winnerCard").innerHTML=`
+
+<h4><i class="bi bi-trophy-fill text-warning"></i> ${election.name}</h4>
+
+<hr>
+
+<h3 class="text-warning">${winner.name}</h3>
+
+<p>Winner Votes : <strong>${winner.votes}</strong></p>
+
+<p>Total Votes : ${totalVotes}</p>
+
+`
+
+let table=""
+
+election.candidates.forEach(candidate=>{
+
+let percent=Math.round((candidate.votes/totalVotes)*100)
+
+let status=candidate.name==winner.name
+?'<span class="badge badge-winner">Winner</span>'
+:'-'
+
+table+=`
+
+<tr>
+
+<td>${candidate.name}</td>
+
+<td>${candidate.votes}</td>
+
+<td>
+
+<div class="progress">
+
+<div class="progress-bar bg-info" style="width:${percent}%">
+${percent}%
+</div>
+
+</div>
+
+</td>
+
+<td>${status}</td>
+
+</tr>
+
+`
+
+})
+
+document.getElementById("resultTable").innerHTML=table
+
+window.scrollTo({
+top:500,
+behavior:"smooth"
+})
+
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Team - Online Voting System</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+  <style>
+    body {
+      background: #f9f9f9;
+      color: #333;
+      font-family: "Poppins", sans-serif;
+      line-height: 1.6;
+    }
+
+    /* Navbar */
+    .navbar {
+      background: #212529;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+    .navbar-brand {
+      font-size: 26px;
+      font-weight: bold;
+      color: #ffc107 !important;
+    }
+    .nav-link {
+      color: #fff !important;
+      font-weight: 500;
+      margin-left: 10px;
+    }
+    .nav-link:hover {
+      color: #ffc107 !important;
+    }
+    .navbar-toggler {
+      border: none;
+    }
+    .navbar-toggler:focus {
+      box-shadow: none;
+    }
+    .navbar-toggler-icon {
+      color: #ffc107;
+      font-size: 28px;
+    }
+
+    /* Section Headings */
+    .section-heading {
+      text-align: center;
+      font-size: 30px;
+      margin: 50px 0 25px;
+      color: #212529;
+      font-weight: 700;
+      position: relative;
+    }
+    .section-heading::after {
+      content: "";
+      width: 70px;
+      height: 4px;
+      background: #ffc107;
+      display: block;
+      margin: 12px auto 0;
+      border-radius: 2px;
+    }
+
+    /* Team Section */
+    .team-section {
+      padding: 20px;
+    }
+    .team-grid {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      flex-wrap: wrap;
+    }
+    .team-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 25px 20px;
+      width: 280px;
+      text-align: center;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+      border-top: 4px solid #ffc107;
+    }
+    .team-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+    .team-photo {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 15px;
+      border: 4px solid #ffc107;
+      transition: transform 0.3s;
+    }
+    .team-card:hover .team-photo {
+      transform: scale(1.1);
+    }
+    .role {
+      font-weight: bold;
+      color: #555;
+      margin: 5px 0;
+    }
+
+    /* Social Icons */
+    .social-links {
+      margin-top: 12px;
+    }
+    .social-links a {
+      margin: 0 8px;
+      font-size: 1.4rem;
+      color: #212529;
+      transition: color 0.3s, transform 0.2s;
+    }
+    .social-links a:hover {
+      color: #ffc107;
+      transform: scale(1.2);
+    }
+
+    /* Project Info */
+    .project-info {
+      background: #fff;
+      padding: 35px;
+      margin: 50px auto;
+      max-width: 950px;
+      border-radius: 20px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+      border-left: 5px solid #ffc107;
+    }
+    .project-info ul {
+      margin: 25px 0;
+      padding-left: 0;
+    }
+    .project-info li {
+      list-style: none;
+      margin: 12px 0;
+      padding-left: 35px;
+      position: relative;
+      font-size: 17px;
+      font-weight: 500;
+    }
+    .project-info li::before {
+      content: "✔";
+      color: #ffc107;
+      font-weight: bold;
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-size: 18px;
+    }
+    .project-info p {
+      margin-top: 20px;
+      font-size: 16px;
+      color: #444;
+      text-align: justify;
+    }
+
+    /* Footer */
+    .footer {
+      background: #000;
+      color: #febc04;
+      text-align: center;
+      padding: 18px;
+      margin-top: 40px;
+      font-size: 15px;
+      letter-spacing: 1px;
+      box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .section-heading {
+        font-size: 24px;
+      }
+      .team-card {
+        width: 90%;
+      }
+      .project-info {
+        margin: 30px 15px;
+        padding: 20px;
+      }
+    }
+    @media (max-width: 480px) {
+      .navbar-brand {
+        font-size: 22px;
+      }
+      .section-heading {
+        font-size: 20px;
+      }
+      .team-photo {
+        width: 100px;
+        height: 100px;
+      }
+      .project-info {
+        padding: 15px;
+        font-size: 14px;
+      }
+      .project-info li {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Responsive Navbar -->
+<nav class="navbar navbar-expand-lg">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Our Team</a>
+    <button class="navbar-toggler text-warning" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <i class="bi bi-list"></i>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/index"><i class="bi bi-house-door-fill"></i> Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/contact"><i class="bi bi-envelope-fill"></i> Contact</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Team Section -->
+<section class="team-section">
+  <h2 class="section-heading">Meet Our Team</h2>
+  <div class="team-grid">
+
+    <!-- Member 1 -->
+    <div class="team-card">
+      <img src="{{url_for('static',filename='images/shukla.jpg')}}" alt="Shukla Gaurav" class="team-photo">
+      <h3>Shukla Gaurav</h3>
+      <p class="role">Backend Developer</p>
+      <p>
+        Handles server-side logic, database management, and ensures secure authentication 
+        for smooth operations.
+      </p>
+      <div class="social-links">
+        <a href="#"><i class="bi bi-facebook"></i></a>
+        <a href="#"><i class="bi bi-linkedin"></i></a>
+        <a href="#"><i class="bi bi-github"></i></a>
+      </div>
+    </div>
+
+    <!-- Member 2 -->
+    <div class="team-card">
+      <img src="{{url_for('static',filename='images/avanish.jpg')}}"
+ alt="Avanish Goswami" class="team-photo">
+      <h3>Avanish Goswami</h3>
+      <p class="role">Frontend Developer</p>
+      <p>
+        Specialized in building responsive web designs and interactive UI for 
+        seamless user experience.
+      </p>
+      <div class="social-links">
+        <a href="#"><i class="bi bi-instagram"></i></a>
+        <a href="#"><i class="bi bi-twitter-x"></i></a>
+        <a href="#"><i class="bi bi-github"></i></a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Project Info -->
+<section class="project-info">
+  <h2 class="section-heading">Project Details</h2>
+  <ul>
+    <li><strong>5th Semester:</strong> Frontend development (HTML, CSS, JS) – Designing the complete user interface with responsive design.</li>
+    <li><strong>6th Semester:</strong> Full Project Development (Frontend + Backend + Database + Security) – Developing the entire online voting system with real-time functionality.</li>
+    <li><strong>Styling:</strong> CSS used extensively for layouts, colors, typography, animations, and responsive behavior to make the system attractive and user-friendly.</li>
+  </ul>
+  <p>
+    Our project is focused on making elections transparent, secure, and easily accessible to everyone. 
+    By combining modern frontend technologies with a robust backend and database system, we aim to provide
+    a seamless online voting experience for all users. This project emphasizes security, user experience, 
+    and real-time results.
+  </p>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <p>© 2025 Online Voting System | Designed by Shukla Gaurav & Avanish Goswami</p>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

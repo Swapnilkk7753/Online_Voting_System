@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>🗳️ Online Voting System</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
+</head>
+
+<body>
+
+<!-- ===== HEADER ===== -->
+<!--<nav class="navbar navbar-dark bg-dark px-4">
+  <div class="d-flex align-items-center gap-2">
+    <img src="images/logo.jpg" width="40" class="rounded-circle border border-warning">
+    <span class="text-warning fw-bold">Online Voting System</span>
+  </div>
+  <div>
+    <a href="#" class="text-white me-3">Home</a>
+    <a href="#" class="text-white me-3">Team</a>
+    <a href="#" class="text-white">Contact</a>
+  </div>
+</nav>-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4 shadow">
+  <div class="d-flex align-items-center gap-2">
+    <img src="{{url_for('static',filename='images/logo.jpeg')}}" width="40" class="rounded-circle border border-warning">
+    <span class="text-warning fw-bold fs-5">Online Voting System</span>
+  </div>
+
+  <div class="ms-auto d-flex gap-2">
+    <a href="/index" class="btn btn-outline-warning btn-sm">
+      <i class="bi bi-house-door-fill me-1"></i> Home
+    </a>
+
+    <a href="/team" class="btn btn-outline-info btn-sm">
+      <i class="bi bi-people-fill me-1"></i> Team
+    </a>
+
+    <a href="/contact" class="btn btn-outline-success btn-sm">
+      <i class="bi bi-envelope-fill me-1"></i> Contact
+    </a>
+
+    <a href="/login" class="btn btn-warning btn-sm text-dark fw-bold">
+      <i class="bi bi-box-arrow-in-right me-1"></i> Login
+    </a>
+  </div>
+</nav>
+
+
+
+<!-- ===== MAIN ===== -->
+<div class="container d-flex justify-content-center align-items-center min-vh-100">
+  <div class="card shadow-lg p-4 auth-card">
+
+    <!-- LOGIN -->
+     <form action="/LoginUser" method="post">
+    <div id="loginBox">
+      <h3 class="text-center mb-3">🔐 Login</h3>
+
+      <input type="text" id="loginId" class="form-control mb-2" name="UserId" placeholder="User ID">
+      <input type="password" id="loginPass" class="form-control mb-2" name="pass" placeholder="Password">
+
+      <select id="loginType" class="form-select mb-3" name="loginType">
+        <option value="">Login Type</option>
+        <option value="student">Student</option>
+        <option value="employee">Employee</option>
+      </select>
+
+      <button type="submit" class="btn btn-warning w-100" onclick="login()">Login</button>
+
+      <p class="text-center mt-3">
+        New user?
+        <a href="#" onclick="showSignup()">Sign up</a>
+      </p>
+    </div>
+   </form>
+    <!-- SIGNUP -->
+     <form action="/RegisterUser" method="post" enctype="multipart/form-data">
+    <div id="signupBox" class="d-none">
+      <h3 class="text-center mb-3">📝 Register</h3>
+
+      <select id="userType" class="form-select mb-2" name="loginTyper">
+        <option value="">Select Type</option>
+        <option value="student">Student</option>
+        <option value="employee">Employee</option>
+      </select>
+
+      <input type="text" id="name" name="Name" class="form-control mb-2" placeholder="Full Name">
+      <input type="text" id="userId" name="UserId" class="form-control mb-2" placeholder="ID">
+      <input type="email" id="email" name="Email" class="form-control mb-2" placeholder="Email">
+      <input type="password" id="pass"  name="pass" class="form-control mb-2" placeholder="Password">
+      <input type="password" id="cpass" name="cpass" class="form-control mb-2" placeholder="Confirm Password">
+
+      <input type="file" id="photo" class="form-control mb-2" name="photo"  accept="image/*" required>
+      <img id="preview" class="preview-img d-none">
+
+      <button type="submit" class="btn btn-success w-100" onclick="signup()">Register</button>
+
+      <p class="text-center mt-3">
+        Already registered?
+        <a href="#" onclick="showLogin()">Login</a>
+      </p>
+    </div>
+    </form>
+
+  </div>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<footer class="bg-dark text-center text-white p-3">
+  © 2025 Online Voting System | Designed by Shukla Gaurav & Avanish Goswami
+</footer>
+
+<script src="{{url_for('static',filename='js/index.js')}}"></script>
+</body>
+</html>

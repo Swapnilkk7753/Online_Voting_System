@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard – Online Voting System</title>
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+
+  <!-- Material Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #0e0e0e;
+    }
+
+    /* ===== Sidebar ===== */
+    .sidebar {
+      min-height: 100vh;
+      background: linear-gradient(180deg, #121212, #1b1b1b);
+      color: #fff;
+      padding: 20px 10px;
+    }
+
+    .sidebar h4 {
+      text-align: center;
+      font-weight: 600;
+      margin-bottom: 30px;
+    }
+
+    .nav-link {
+      color: #cfcfcf !important;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 8px;
+      margin-bottom: 6px;
+      transition: 0.3s;
+    }
+
+    .nav-link:hover {
+      background: rgba(255,255,255,0.1);
+      color: #fff !important;
+    }
+
+    .nav-link.active {
+      background: linear-gradient(135deg, #007bff, #00c6ff);
+      color: #fff !important;
+    }
+
+    /* ===== Main Content ===== */
+    main {
+      background: linear-gradient(135deg, #e3f2fd, #ffffff);
+      min-height: 100vh;
+      padding: 30px;
+    }
+
+    .page-title {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      color: #0d6efd;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    /* ===== Cards ===== */
+    .card-custom {
+      border-radius: 15px;
+      padding: 20px;
+      color: #fff;
+      height: 150px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+      transition: 0.3s;
+    }
+
+    .card-custom:hover {
+      transform: translateY(-5px);
+    }
+
+    .card-icon {
+      font-size: 42px;
+      opacity: 0.9;
+    }
+
+    .section-title {
+      margin-top: 40px;
+      margin-bottom: 20px;
+      font-weight: 600;
+      color: #0d6efd;
+    }
+
+    /* ===== Logout Button ===== */
+    .logout-btn {
+      background: linear-gradient(135deg, #dc3545, #ff4d5a);
+      border: none;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container-fluid">
+  <div class="row">
+
+    <!-- Sidebar -->
+    <aside class="col-12 col-md-3 col-xl-2 sidebar">
+      <h4>Admin Panel</h4>
+      <ul class="nav flex-column">
+        <li><a href="/dashboard" class="nav-link active">Dashboard</a></li>
+        <li><a href="/candidate" class="nav-link">Candidates</a></li>
+        <li><a href="/event" class="nav-link">Elections</a></li>
+        <li><a href="/A_result" class="nav-link">Results</a></li>
+        <li><a href="/report" class="nav-link">Reports</a></li>
+      </ul>
+      <a href="/logout" class="btn btn-danger w-100 mt-4 logout-btn">Logout</a>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="col-12 col-md-9 col-xl-10">
+      <h1 class="page-title">Online Voting System</h1>
+      <p class="text-center text-muted">Welcome to the admin dashboard</p>
+
+      <!-- Cards -->
+      <div class="row g-4 mt-4">
+        <div class="col-sm-6 col-lg-3">
+          <div class="card-custom bg-primary">
+            <div>
+              <h6>Total Voters</h6>
+              <h3>{{total_voter}}</h3>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-lg-3">
+          <div class="card-custom bg-success">
+            <div>
+              <h6>Active Elections</h6>
+              <h3>{{total_ele}}</h3>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-lg-3">
+          <div class="card-custom bg-warning text-dark">
+            <div>
+              <h6>Candidates</h6>
+              <h3>{{total_can}}</h3>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-lg-3">
+          <div class="card-custom bg-danger">
+            <div>
+              <h6>Total Votes</h6>
+              <h3>{{votes}}</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Actions -->
+      <h4 class="section-title">⚡ Quick Actions</h4>
+      <div class="d-flex flex-wrap gap-3">
+        <a href="/event" class="btn btn-outline-primary"> Manage Elections</a>
+        <a href="/candidate" class="btn btn-outline-success"> Manage Candidates</a>
+        <a href="#" class="btn btn-outline-warning"> Manage Voters</a>
+      </div>
+
+      <!-- Analytics -->
+      <h4 class="section-title">📊 Analytics</h4>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="p-4 bg-secondary text-white rounded">📈 Analytics Chart Placeholder</div>
+        </div>
+        <div class="col-md-6">
+          <div class="p-4 bg-secondary text-white rounded">📊 Voting Trends Placeholder</div>
+        </div>
+      </div>
+    </main>
+      
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

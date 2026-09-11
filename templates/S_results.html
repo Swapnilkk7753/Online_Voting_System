@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Election Results</title>
+
+  <!-- Bootstrap 5 -->
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Bootstrap Icons -->
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- Google Font -->
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #1d2671, #c33764);
+      color: #fff;
+      min-height: 100vh;
+    }
+
+    .glass-card {
+      background: rgba(255, 255, 255, 0.14);
+      backdrop-filter: blur(14px);
+      border-radius: 18px;
+      padding: 25px;
+      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.45);
+    }
+
+    .page-title {
+      font-weight: 600;
+      color: #ffd200;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .winner-card {
+      background: linear-gradient(135deg, #0d6efd, #00c6ff);
+      border-radius: 18px;
+      padding: 25px;
+      color: #fff;
+      box-shadow: 0 0 22px rgba(13, 110, 253, 0.6);
+    }
+
+    .winner-img {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      border: 3px solid #fff;
+      object-fit: cover;
+    }
+
+    table th {
+      color: #ffd200;
+    }
+
+    .progress {
+      height: 10px;
+      border-radius: 10px;
+    }
+
+    .badge-winner {
+      background-color: #ffd200;
+      color: #000;
+      font-weight: 600;
+    }
+  </style>
+
+</head>
+<body>
+
+<div class="container py-5">
+
+  <!-- Header -->
+
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="page-title">
+      <i class="bi bi-mortarboard"></i> Student Election Results
+    </h2>
+    <a href="/student" class="btn btn-outline-light">
+      <i class="bi bi-arrow-left"></i> Dashboard
+    </a>
+  </div>
+
+  <!-- Winner Section -->
+
+  <div class="winner-card mb-5">
+    <div class="row align-items-center">
+      <div class="col-md-2 text-center">
+        <img src="{{url_for('static',filename='uploads/'+w[6])}}" alt="Winner" class="winner-img">
+      </div>
+      <div class="col-md-10">
+        <h4 class="fw-bold mb-1">🏆 Winner: {{w[1]}}</h4>
+        <p class="mb-1">Position: {{w[5]}}</p>
+        <span class="badge badge-winner">{{w[8]}}</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Result Table -->
+
+  <div class="glass-card">
+    <h5 class="mb-3"><i class="bi bi-list-ul"></i> Candidate-wise Results</h5>
+
+```
+<div class="table-responsive">
+  <table class="table table-dark table-hover align-middle">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Photo</th>
+        <th>Name</th>
+        <th>Position</th>
+        <th>Votes</th>
+        <th>Vote %</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td><img src="{{url_for('static',filename='uploads/'+w[6])}}" width="45" class="rounded-circle"></td>
+        <td>{{w[1]}}</td>
+        <td>{{w[5]}}</td>
+        <td>{{w[8]}}</td>
+        <td>
+          <div class="progress">
+            <div class="progress-bar bg-success" style="width: {{ ((w[8]*100)/total_voters)|round(2) }}%"></div>
+          </div>
+          {{((w[8]*100)/total_voters)|round(2)}}%
+        </td>
+        <td><span class="badge bg-success">Winner</span></td>
+      </tr>
+
+      <tr>
+        <td>2</td>
+        <td><img src="{{url_for('static',filename='uploads/'+s[6])}}" width="45" class="rounded-circle"></td>
+        <td>{{s[1]}}</td>
+        <td>{{s[5]}}</td>
+        <td>{{s[8]}}</td>
+        <td>
+          <div class="progress">
+            <div class="progress-bar bg-info" style="width: {{ ((s[8]*100)/total_voters)|round(2) }}%"></div>
+          </div>
+          {{ ((s[8]*100)/total_voters)|round(2) }}%
+        </td>
+        <td><span class="badge bg-secondary">Runner-up</span></td>
+      </tr>
+{%for i in rwu%}
+      <tr>
+        <td>{{loop.index+2}}</td>
+        <td><img src="{{url_for('static',filename='uploads/'+i[6])}}" width="45" class="rounded-circle"></td>
+        <td>{{i[1]}}</td>
+        <td>{{i[5]}}</td>
+        <td>{{i[8]}}</td>
+        <td>
+          <div class="progress">
+            <div class="progress-bar bg-warning" style="width: {{ ((i[8]*100)/total_voters)|round(2) }}%"></div>
+          </div>
+          {{ ((i[8]*100)/total_voters)|round(2) }}%
+        </td>
+        <td><span class="badge bg-danger">Lost</span></td>
+      </tr>
+      {%endfor%}
+    </tbody>
+  </table>
+</div>
+```
+
+  </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
